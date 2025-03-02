@@ -1,15 +1,18 @@
 import "../styles/main.scss";
+import ExpenseForm from "../components/ExpenseForm";
+import ExpenseList from "../components/ExpenseList";
+import { useExpenseContext } from "../context/expenseContext";  // Custom context hook
 
-const Home = () => {
+
+const Home: React.FC = () => {
+  const { state } = useExpenseContext();
+  const expenses = state.expenses;
+  
   return (
-    <div className="container">
-      <div className="row align-items-center">
-        <div className="col">
-          <h1>Clean Startup Project</h1>
-          <p>A modern React + TypeScript starter template.</p>
-        </div>
-      </div>
-      
+    <div className="container-fluid">
+      <h1 className="text-center mb-4">Expense Manager</h1>
+      <ExpenseForm />
+      <ExpenseList />
     </div>
   );
 };
